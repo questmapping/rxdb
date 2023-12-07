@@ -6,8 +6,9 @@
   "private": true,
   "scripts": {
     "preinstall": "(cd ../../ && npx yarn@1.13.0 pack ../../ --filename ./examples/vue/rxdb-local.tgz)",
-    "start": "concurrently \"npm run server\" \"npm run dev\"",
-    "server": "pouchdb-server --host 0.0.0.0 -p 10101 -m -d /tmp/pouchdb-server/ -n true",
+    "express": "node backend/server.js",
+    "start": "concurrently \"npm run server\" \"npm run dev\" \"npm run express\"",
+    "server": "pouchdb-server --host 0.0.0.0 -p 10101 -d ./pouchdb-server/ -n true",
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build:serve": "ws -p 8888 -d dist/",
@@ -16,6 +17,8 @@
     "test": "concurrently \"npm run server\" \"npm run build:serve\" \"npm run test:run\" --kill-others --success first"
   },
   "dependencies": {
+    "@tensorflow/tfjs-node": "^4.14.0",
+    "express": "^4.18.2",
     "pouchdb-server": "4.2.0",
     "random-int": "3.0.0",
     "register-service-worker": "1.7.2",
