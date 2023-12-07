@@ -24,4 +24,8 @@ release-body.md
 dist/typings
 *-debug.log
 .vscode
+examples/vue/backend/model/*
+!examples/vue/backend/model/.gitkeep
+examples/vue/pouchdb-server/*
+!examples/vue/pouchdb-server/.gitkeep
 examples/vue/build
